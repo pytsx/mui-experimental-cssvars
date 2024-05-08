@@ -2,7 +2,7 @@
 
 import ColorModeSwitcher from "@/app/components/modeSwitcher"
 import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/ToolBar"
+import Toolbar from "@mui/material/Toolbar"
 import Container from "@mui/material/Container"
 
 const AppAppBar = () => {

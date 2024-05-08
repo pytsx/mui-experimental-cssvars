@@ -1,11 +1,10 @@
 "use client"
-import { AppRouterCacheProvider, AppRouterCacheProviderProps } from "@mui/material-nextjs/v14-appRouter"
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter"
 import AppAppBar from "./components/AppAppBar"
-const LandingPage = (props: AppRouterCacheProviderProps) => {
+
+const LandingPage = () => {
   return (
-    <AppRouterCacheProvider
-      {...props}
-    >
+    <AppRouterCacheProvider>
       <AppAppBar />
     </AppRouterCacheProvider>
   )

@@ -2,7 +2,7 @@
 
 import ColorModeSwitcher from "@/app/components/modeSwitcher"
 import AppBar from "@mui/material/AppBar"
-import ToolBar from "@mui/material/ToolBar"
+import Toolbar from "@mui/material/ToolBar"
 import Container from "@mui/material/Container"
 
 const AppAppBar = () => {
@@ -11,10 +11,10 @@ const AppAppBar = () => {
       position="fixed"
     >
       <Container maxWidth="lg">
-        <ToolBar>
+        <Toolbar>
           <div />
           <ColorModeSwitcher />
-        </ToolBar>
+        </Toolbar>
       </Container>
     </AppBar>
   )

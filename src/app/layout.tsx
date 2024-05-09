@@ -19,8 +19,18 @@ export default async function RootLayout({ children }: Readonly<PropsWithChildre
     <html lang="en">
       <body>
         {colorShemeScript}
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <CssVarsProvider theme={theme} defaultMode="system"  >
+        <AppRouterCacheProvider
+          options={{
+            enableCssLayer: true,
+
+          }}
+        >
+          <CssVarsProvider
+            theme={theme}
+            defaultMode="system"
+            disableTransitionOnChange
+
+          >
             <CssBaseline />
             {children}
           </CssVarsProvider>

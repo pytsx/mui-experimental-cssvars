@@ -1,5 +1,5 @@
 "use client"
-import TextField from "@mui/material/TextField"
+import OutlinedInput from "@mui/material/OutlinedInput"
 import Button from "@mui/material/Button"
 import Box from "@mui/material/Box"
 import Stack from "@mui/material/Stack"
@@ -26,7 +26,7 @@ const RadialBackground = styled("div")(({ theme }) => ({
 
 const PromoImage = styled("div")(({ theme }) => ({
   margin: "0 auto",
-  width: "98%",
+  width: "100%",
   height: 700,
   borderRadius: theme.shape.borderRadius,
   outline: "3px solid",
@@ -48,13 +48,13 @@ const PromoImage = styled("div")(({ theme }) => ({
 
 const Hero = () => {
   return (
-    <React.Fragment>
+    <Box sx={{ paddingBottom: "3rem " }}>
       <RadialBackground />
-
-      <Container sx={{ mt: 16, mb: 8 }}>
+      <Container sx={{ mt: 24 }} >
         <Stack
           alignItems="center"
-          spacing={2}
+          gap={1}
+          sx={{ mb: 14 }}
         >
 
           <Typography
@@ -105,14 +105,13 @@ const Hero = () => {
             gap={1}
             sx={{ pt: 4 }}
           >
-            <TextField
+            <OutlinedInput
               id="email-hero"
-              variant="outlined"
               size="small"
               placeholder="insira seu email"
               aria-label="insira seu email"
               inputProps={{
-                autocomplete: "off",
+                autoComplete: "off",
                 "aria-label": "insira seu email"
               }}
 
@@ -128,7 +127,7 @@ const Hero = () => {
         <PromoImage />
       </Container>
 
-    </React.Fragment >
+    </Box >
   )
 }
 

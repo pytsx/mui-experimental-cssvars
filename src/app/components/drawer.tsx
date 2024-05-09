@@ -1,3 +1,5 @@
+"use client"
+
 import MuiDrawer, {
   type DrawerProps as MuiDrawerProps
 } from "@mui/material/Drawer"
@@ -6,6 +8,7 @@ import React from "react"
 interface DrawerProps extends MuiDrawerProps {
   trigger?: React.ReactNode
 }
+
 const Drawer = React.forwardRef(({
   children,
   trigger,
@@ -33,5 +36,6 @@ const Drawer = React.forwardRef(({
     </React.Fragment>
   )
 })
+
 Drawer.displayName = "Drawer"
 export default Drawer

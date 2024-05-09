@@ -1,3 +1,5 @@
+"use client"
+
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
@@ -7,6 +9,7 @@ import IconButton from "@mui/material/IconButton"
 import MenuItem from "@mui/material/MenuItem"
 import Stack from "@mui/material/Stack"
 import Toolbar from "@mui/material/Toolbar"
+import Script from "../data.json"
 
 import ColorModeSwitcher from "@/app/components/modeSwitcher"
 
@@ -17,7 +20,6 @@ import React from "react"
 import Drawer from "@/app/components/drawer"
 
 const ResponsiveMenu: React.FC = () => {
-  const items = ["novidades", "produtos", "sobre", "contato"]
 
   return (
     <React.Fragment>
@@ -32,15 +34,14 @@ const ResponsiveMenu: React.FC = () => {
         <Stack
           direction="row"
           width="100%"
-          gap={1}
           marginX={2}
         >
           {
-            items.map((item, index) => (
+            Script.menus.produto.map((item, index) => (
               <Button
                 size="small"
                 variant="text"
-                color="info"
+                href={`#${item}`}
                 key={`appbar-${index}-button`}
               >
                 {item}
@@ -73,7 +74,7 @@ const ResponsiveMenu: React.FC = () => {
             }}
           >
             {
-              items.map((item, index) => (
+              Script.menus.produto.map((item, index) => (
                 <MenuItem
                   key={`appbar-${index}-menuItem`}
                 >

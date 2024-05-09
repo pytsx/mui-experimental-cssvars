@@ -1,0 +1,34 @@
+{
+  "menus": {
+    "produto": [
+      "novidades",
+      "prova social",
+      "destaques",
+      "preço",
+      "FAQ"
+    ],
+    "empresa": [
+      "sobre nós",
+      "contato",
+      "projetos"
+    ]
+  },
+  "FAQ": [
+    {
+      "pergunta": "Como faço para comprar?",
+      "resposta": "Basta clicar no botão comprar e seguir as instruções."
+    },
+    {
+      "pergunta": "Qual a forma de pagamento?",
+      "resposta": "Aceitamos cartão de crédito e boleto bancário."
+    },
+    {
+      "pergunta": "Qual o prazo para reembolso?",
+      "resposta": "O prazo para reembolso é de 7 dias."
+    },
+    {
+      "pergunta": "Qual o prazo para cancelamento?",
+      "resposta": "O prazo para cancelamento é de 7 dias."
+    }
+  ]
+}

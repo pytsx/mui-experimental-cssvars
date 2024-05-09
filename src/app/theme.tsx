@@ -8,7 +8,8 @@ const brand = palette.neutral
 
 const getDesignTokens = (mode: "light" | "dark") => ({
   palette: {
-    mode, primary: {
+    mode,
+    primary: {
       light: brand[200],
       main: brand[900],
       dark: brand[800],
@@ -89,15 +90,15 @@ const getDesignTokens = (mode: "light" | "dark") => ({
       primary: palette.neutral[900],
       secondary: palette.neutral[700],
       ...(mode === "dark" && {
-        primary: palette.neutral[200],
-        secondary: palette.neutral[400],
+        primary: palette.neutral[300],
+        secondary: palette.neutral[500],
       }),
     },
     divider: mode === "dark" ? divider.dark : divider.light,
   }
 })
 const divider = {
-  light: palette.neutral[500],
+  light: palette.neutral[300],
   dark: palette.neutral[900]
 }
 const { palette: lightPalette, ...rest } = getDesignTokens("light");
@@ -118,6 +119,47 @@ export default extendTheme({
     borderRadius: 9
   },
   components: {
+    MuiAccordion: {
+      defaultProps: {
+        elevation: 0,
+        disableGutters: true,
+      },
+      styleOverrides: {
+        root: ({ theme }) => ({
+          background: "none",
+          border: `1px solid`,
+          borderTop: "none",
+          padding: ".32rem",
+          borderColor: divider.light,
+          ...theme.applyStyles("dark", {
+            borderColor: divider.dark,
+          }),
+          "&:before": {
+            backgroundColor: "transparent",
+          },
+          "&:first-of-type": {
+            borderTop: `1px solid`,
+            borderColor: divider.light,
+            ...theme.applyStyles("dark", {
+              borderColor: divider.dark,
+            })
+          }
+        })
+      },
+    },
+    MuiAccordionSummary: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          textTransform: "none",
+          borderRadius: theme.shape.borderRadius,
+          color: theme.palette.text.secondary,
+          "&:hover": {
+            backgroundColor: alpha(palette.neutral[400], .2),
+          },
+
+        })
+      }
+    },
     MuiAppBar: {
       styleOverrides: {
         root: (theme) => ({
@@ -129,6 +171,7 @@ export default extendTheme({
     MuiButtonBase: {
       styleOverrides: {
         root: ({ theme }) => ({
+          whiteSpace: "nowrap",
           color: palette.neutral[900],
           textTransform: "capitalize",
           ...theme.applyStyles('dark', {
@@ -160,19 +203,19 @@ export default extendTheme({
             backgroundColor: palette.sky[400],
             boxShadow: `inset 0 2px 0 ${alpha(palette.sky[300], .2)}, inset 0 -2px 0 ${palette.sky[500]}`,
             border: `2px solid`,
-            borderColor: palette.sky[400],
+            borderColor: palette.sky[300],
             ...theme.applyStyles("dark", {
               color: "white",
-              borderColor: palette.sky[700],
+              borderColor: palette.sky[600],
               backgroundColor: palette.sky[700],
               boxShadow: `inset 0 2px 0 ${alpha(palette.sky[500], .2)}, inset 0 -2px 0 ${palette.sky[800]}`,
             }),
             ":hover": {
               boxShadow: `inset 0 2px 0 ${alpha(palette.sky[200], .2)}, inset 0 -2px 0 ${palette.sky[600]}`,
-              borderColor: palette.sky[500],
+              borderColor: palette.sky[400],
               backgroundColor: palette.sky[500],
               ...theme.applyStyles("dark", {
-                backgroundColor: palette.sky[800],
+                backgroundColor: palette.sky[700],
                 borderColor: palette.sky[800],
                 boxShadow: `inset 0 2px 0 ${alpha(palette.sky[400], .2)}, inset 0 -2px 0 ${palette.sky[900]}`,
 
@@ -187,6 +230,14 @@ export default extendTheme({
                 transformOrigin: "bottom left  "
               }
             }
+          })
+        },
+        {
+          props: { variant: "text" },
+          style: ({ theme }) => ({
+            minWidth: 0,
+            padding: "0 .64rem",
+            lineHeight: 1,
           })
         }
       ]
@@ -236,6 +287,15 @@ export default extendTheme({
         })
       }
     },
+    MuiLink: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          whiteSpace: "nowrap",
+          color: palette.sky[400],
+
+        })
+      }
+    },
     MuiMenuItem: {
       styleOverrides: {
         root: {
@@ -244,14 +304,27 @@ export default extendTheme({
         }
       }
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          boxShadow: ` inset 0px 0px 0px 3px ${palette.neutral[950]}, inset 0px 0px 0px 5px #0066cc32`,
+          borderRadius: theme.shape.borderRadius,
+          ":hover": {
+          },
+
+        }),
+
+      },
+
+    },
     MuiToolbar: {
       styleOverrides: {
         root: ({ theme }) => ({
           marginTop: ".64rem",
-          borderRadius: "1rem",
+          borderRadius: theme.shape.borderRadius,
           border: `1px solid`,
           justifyContent: "space-between",
-          background: alpha(palette.neutral[50], .24),
+          background: alpha(palette.neutral[50], .64),
           backdropFilter: "blur(8px)",
           borderColor: divider.light,
           ...theme.applyStyles("dark", {
@@ -265,7 +338,6 @@ export default extendTheme({
     MuiTypography: {
       styleOverrides: {
         root: ({ theme }) => ({
-          color: palette.neutral[900]
         }),
       },
     }

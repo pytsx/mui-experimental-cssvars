@@ -1,19 +1,123 @@
-"use client"
+import AppBar from "@mui/material/AppBar"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import ButtonBase from "@mui/material/ButtonBase"
+import Container from "@mui/material/Container"
+import IconButton from "@mui/material/IconButton"
+import MenuItem from "@mui/material/MenuItem"
+import Stack from "@mui/material/Stack"
+import Toolbar from "@mui/material/Toolbar"
 
 import ColorModeSwitcher from "@/app/components/modeSwitcher"
-import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
-import Container from "@mui/material/Container"
 
-const AppAppBar = () => {
+import {
+  Menu
+} from "lucide-react"
+import React from "react"
+import Drawer from "@/app/components/drawer"
+
+const ResponsiveMenu: React.FC = () => {
+  const items = ["novidades", "produtos", "sobre", "contato"]
+
+  return (
+    <React.Fragment>
+      {/* md */}
+      <Box
+        sx={{
+          display: { xs: "none", md: "flex" },
+          width: "100%",
+
+        }}
+      >
+        <Stack
+          direction="row"
+          width="100%"
+          gap={1}
+          marginX={2}
+        >
+          {
+            items.map((item, index) => (
+              <Button
+                size="small"
+                variant="text"
+                color="info"
+                key={`appbar-${index}-button`}
+              >
+                {item}
+              </Button>
+            ))
+          }
+        </Stack>
+      </Box>
+
+      {/* xs */}
+      <Box
+        sx={{
+          display: { xs: "flex", md: "none" }
+        }}
+      >
+        <Drawer
+          anchor="top"
+          className="border-b"
+          trigger={
+            <IconButton>
+              <Menu className="w-5 h-5" />
+            </IconButton>
+          }
+        >
+          <Box
+            sx={{
+              padding: "1rem",
+              minHeight: "40vh",
+              position: "relative"
+            }}
+          >
+            {
+              items.map((item, index) => (
+                <MenuItem
+                  key={`appbar-${index}-menuItem`}
+                >
+                  {item}
+                </MenuItem>
+              ))
+            }
+          </Box>
+        </Drawer>
+      </Box>
+    </React.Fragment>
+  )
+}
+const AppAppBar: React.FC = () => {
   return (
     <AppBar
       position="fixed"
     >
-      <Container maxWidth="lg">
+      <Container>
         <Toolbar>
-          <div />
-          <ColorModeSwitcher />
+          <ButtonBase
+            component="a"
+            href="/"
+            sx={{
+              fontWeight: "bold",
+              opacity: 0.8,
+              fontSize: "1.2rem",
+              lineHeight: ".0rem",
+            }}
+          >
+            logo
+          </ButtonBase>
+
+          <Stack
+            direction="row"
+            gap={.5}
+            sx={{
+              width: { xs: "fit-content", md: "100%" }
+            }}
+          >
+            <ResponsiveMenu />
+            <ColorModeSwitcher />
+          </Stack>
+
         </Toolbar>
       </Container>
     </AppBar>
